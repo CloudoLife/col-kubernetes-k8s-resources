@@ -1,0 +1,18 @@
+
+
+# First, Denylist ignore everything
+*
+
+# Now, Denylist ignore anything that's a directory
+!*/
+
+# Allowlist the file or folder
+# !NotIgnoredFile
+# !NotIgnoredFolder/
+
+# Recursively allowlist its contents
+# !NotIgnoredFolder/**
+
+!.gitignore
+
+!README.md
