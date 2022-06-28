@@ -1,0 +1,68 @@
+
+# appsmith/values.yaml at release · appsmithorg/appsmith
+# https://github.com/appsmithorg/appsmith/blob/release/deploy/helm/values.yaml
+
+ingress:
+  ## @param ingress.enabled Enable ingress record generation for Ghost
+  ##
+  enabled: true
+
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+
+  hosts:
+    - host: appsmith.demo.cloudolife.com
+
+  # @param ingress.tls Enable TLS configuration for the host defined at `ingress.hosts` parameter
+  # You can:
+  #   - Use the `ingress.secrets` parameter to create this TLS secret
+  #   - Relay on cert-manager to create it by setting `ingress.certManager=true`
+  #   - Relay on Helm to create self-signed certificates by setting `ingress.selfSigned=true`
+  #
+  tls: true
+  # @param ingress.secrets Custom TLS certificates as secrets
+  # NOTE: 'key' and 'certificate' are expected in PEM format
+  # NOTE: 'name' should line up with a 'secretName' set further up
+  # If it is not set and you're using cert-manager, this is unneeded, as it will create a secret for you with valid certificates
+  # If it is not set and you're NOT using cert-manager either, self-signed certificates will be created valid for 365 days
+  # It is also possible to create and manage the certificates outside of this helm chart
+  # Please see README.md for more information
+  # e.g:
+  secrets:
+    - host: appsmith.demo.cloudolife.com
+      secretName: certificate-cloudolife-com
+
+  ## @parm ingress.className Configure Ingress class that being used in ingress resource
+  ## e.g:
+  ## className: "nginx"
+  ##
+  className: "nginx"
+
+# applicationConfig:
+#   APPSMITH_OAUTH2_GOOGLE_CLIENT_ID: ""
+#   APPSMITH_OAUTH2_GOOGLE_CLIENT_SECRET: ""
+#   APPSMITH_OAUTH2_GITHUB_CLIENT_ID: ""
+#   APPSMITH_OAUTH2_GITHUB_CLIENT_SECRET: ""
+#   APPSMITH_FORM_LOGIN_DISABLED: ""
+#   APPSMITH_SIGNUP_DISABLED: ""
+#   APPSMITH_CLIENT_LOG_LEVEL: ""
+#   APPSMITH_GOOGLE_MAPS_API_KEY: ""
+#   APPSMITH_MAIL_ENABLED: ""
+#   APPSMITH_MAIL_HOST: ""
+#   APPSMITH_MAIL_PORT: ""
+#   APPSMITH_MAIL_USERNAME: ""
+#   APPSMITH_MAIL_PASSWORD: ""
+#   APPSMITH_MAIL_FROM: ""
+#   APPSMITH_REPLY_TO: ""
+#   APPSMITH_MAIL_SMTP_AUTH: ""
+#   APPSMITH_MAIL_SMTP_TLS_ENABLED: ""
+#   APPSMITH_DISABLE_TELEMETRY: ""
+#   APPSMITH_RECAPTCHA_SITE_KEY: ""
+#   APPSMITH_RECAPTCHA_SECRET_KEY: ""
+#   APPSMITH_RECAPTCHA_ENABLED: ""
+#   APPSMITH_MONGODB_URI: ""
+#   APPSMITH_REDIS_URL: ""
+#   APPSMITH_ENCRYPTION_PASSWORD: ""
+#   APPSMITH_ENCRYPTION_SALT: ""
+#   APPSMITH_CUSTOM_DOMAIN: ""
