@@ -16,5 +16,6 @@
 !.gitignore
 
 !appsmith/**
+!kubernetes-dashboard/**
 
 !README.md

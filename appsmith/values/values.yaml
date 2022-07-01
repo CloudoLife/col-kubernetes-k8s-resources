@@ -31,7 +31,7 @@ ingress:
   # e.g:
   secrets:
     - host: appsmith.demo.cloudolife.com
-      secretName: certificate-cloudolife-com
+      secretName: certificate-demo-cloudolife-com
 
   ## @parm ingress.className Configure Ingress class that being used in ingress resource
   ## e.g:
